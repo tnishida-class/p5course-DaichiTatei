@@ -1,5 +1,3 @@
-// ダーツ
-
 function setup() {
   const green = color(0, 255, 0);
   const red = color(255, 0, 0);
@@ -10,26 +8,44 @@ function setup() {
   stroke(255);
   strokeWeight(3);
 
+  const maxR = min(width, height);
+
   const cx = width / 2; // 中心は (cx, cy)
   const cy = height / 2;
-  const maxR = min(width, height); // 大きさは幅と高さのうち小さい方
 
-  drawCircle(black, maxR);
-  drawArcs(green, red, maxR * 0.8);
-  // BLANK[1] (hint: drawArcs x 3, drawCircle x 1)
-  drawCircle(red, maxR * 0.05);
-}
+  fill(0);
+  ellipse(cx, cy, maxR);
 
-function drawCircle(c, r){
-  fill(c);
-  ellipse(cx, cy, r, r);
-}
+    for (let i = 0; i < 20; i++) {
+     let start = (Math.PI/10) * i;
+     let stop = (Math.PI/10) * (i + 1);
+   if(i%2==0){
+      fill(green);
+      arc(cx,cy,maxR*0.8,maxR*0.8,start,stop);
+      fill(cream);
+      arc(cx,cy,maxR*0.75,maxR*0.75,start,stop);
+      fill(green);
+      arc(cx,cy,maxR*0.5,maxR*0.5,start,stop);
+      fill(cream);
+      arc(cx,cy,maxR*0.45,maxR*0.45,start,stop);
+        }
+     else if(i%2==1){
+      fill(red);
+      arc(cx,cy,maxR*0.8,maxR*0.8,start,stop);
+      fill(black);
+      arc(cx,cy,maxR*0.75,maxR*0.75,start,stop);
+      fill(red);
+      arc(cx,cy,maxR*0.5,maxR*0.5,start,stop);
+      fill(black);
+      arc(cx,cy,maxR*0.45,maxR*0.45,start,stop);
+     }
+     fill(255)
+     arc(cx,cy,maxR*0.8,maxR*0.8,start-0.01,start+0.01)
+    }
 
-function drawArcs(c1, c2, r) {
-  for (let i = 0; i < 20; i++) {
-    let start = TWO_PI / 20 * i;
-    let stop = TWO_PI / 20 * (i + 1);
-    fill(i % 2 == 0 ? c1 : c2);
-    arc(cx, cy, r, r, start, stop, PIE);
-  }
+  fill(green);
+  ellipse(cx,cy,maxR*0.1);
+
+  fill(red);
+  ellipse(cx,cy,maxR*0.05);
 }
