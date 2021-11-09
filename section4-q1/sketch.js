@@ -9,7 +9,6 @@ function setup(){
   for(let i = 0; i < 10; i++){
     scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入
   }
-
   // 横線を引く
   const n = 10;
   for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }
@@ -19,6 +18,9 @@ function setup(){
   const dx = width / scores.length;
   let px, py; // 線を引くために一つ前の点を覚えておく変数
   for(let i = 0; i < scores.length; i++){
-    // BLANK[1]
+   ellipse(i*dx+20,height*(1-scores[i]/100),10);
+   px = (i-1)*dx+20
+   py = height*(1-scores[i-1]/100)
+    line(px,py,i*dx+20,height*(1-scores[i]/100))
+    }
   }
-}
