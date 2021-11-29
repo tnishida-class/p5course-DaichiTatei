@@ -55,7 +55,7 @@ function draw() {
 
   count+=1
   if(count%80 == 1){
-    const b = {x:random(5,height-5), y:0, size:1/20*width,
+    const b = {x:random(5,width-5), y:0, size:1/20*width,
                vx:random(-3,3), vy:random(1/5,3)}
     balls.push(b);
 
